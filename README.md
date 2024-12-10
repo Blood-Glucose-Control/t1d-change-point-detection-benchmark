@@ -97,6 +97,7 @@ Example: `ado001_Dexcom_Cozmo_2024-02-01_2024-04-30_all_normal.csv`
 
 #### Gamma/normal distribution for loggingTiming
 Each graph contains 50 randomly generated curves
+
 Average logger:
 ![Normal Distribution](data/distribution/average_logger.png)
 
