@@ -5,9 +5,9 @@ An open source benchmark for semi-supervised change point detection of type 1 di
 
 **NOTE: The benchmark is still under heavy development and is subject to change. Consider its current state as alpha v.0.0.1**
 
-0.0.1 - patch/bug fixex
-0.1.0 - Minor data set updates where we add new patients, cgms, insulin pumps, or meal timing regimens.
-1.0.0 - Major data set updates where we add new modeling tasks, like new transfer learning settings.
+- 0.0.1 -> patch/bug fixes
+- 0.1.0 -> Minor data set updates where we add new patients, cgms, insulin pumps, or meal timing regimens.
+- 1.0.0 -> Major data set updates where we add new modeling tasks, like new transfer learning settings.
 
 # Dataset Metadata
 
