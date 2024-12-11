@@ -106,13 +106,13 @@ Example: `ado001_Dexcom_Cozmo_2024-02-01_2024-04-30_all_normal.csv`
 Each graph contains 50 randomly generated curves
 
 Average logger:
-![Normal Distribution](data/distribution/average_logger.png)
+![Normal Distribution](t1d_cpd_benchmark/data/distribution/average_logger.png)
 
 Late logger:
-![Gamma Distribution](data/distribution/late_logger.png)
+![Gamma Distribution](t1d_cpd_benchmark/data/distribution/late_logger.png)
 
 Early logger:
-![Gamma Distribution](data/distribution/early_logger.png)
+![Gamma Distribution](t1d_cpd_benchmark/data/distribution/early_logger.png)
 
 
 # T1D Change Point Detection Benchmark
@@ -147,7 +147,7 @@ data = load_raw_data(index=0)
 print(data.head())
 
 # Load first patient's processed data
-# index for load_raw_data can be 0 to 179
+# index for load_processed_data can be 0 to 179
 data = load_processed_data(index=0)
 print(data.head())
 
@@ -157,7 +157,8 @@ data = load_obfuscated_data(index=0)
 print(data.head())
 
 # Load all patients' data
-all_data = load_raw_data()  # Returns concatenated DataFrame of all patients
+# Returns concatenated DataFrame of all patients
+all_data = load_raw_data()  
 ```
 
 ## Data Types
