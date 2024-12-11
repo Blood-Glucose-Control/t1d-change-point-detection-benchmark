@@ -113,3 +113,59 @@ Late logger:
 
 Early logger:
 ![Gamma Distribution](data/distribution/early_logger.png)
+
+
+# T1D Change Point Detection Benchmark
+
+A benchmark dataset for evaluating change point detection algorithms on Type 1 Diabetes data.
+
+## Installation
+
+You can install the package using pip:
+
+```bash
+pip install t1d-cpd-benchmark
+```
+
+## Usage
+
+The package provides three main functions to load different types of data:
+- `load_raw_data()`: Load raw CGM data
+- `load_processed_data()`: Load processed CGM data
+- `load_obfuscated_data()`: Load obfuscated CGM data
+
+Each function can load either a single patient's data by index or all patients' data.
+
+### Example
+
+```python
+from t1d_cpd_benchmark.datasets import load_raw_data, load_processed_data, load_obfuscated_data
+
+# Load first patient's raw data
+# index for load_raw_data can be 0 to 29
+data = load_raw_data(index=0)
+print(data.head())
+
+# Load first patient's processed data
+# index for load_raw_data can be 0 to 179
+data = load_processed_data(index=0)
+print(data.head())
+
+# Load first patient's obfuscated data
+# index for load_obfuscated_data can be 0 to 59
+data = load_obfuscated_data(index=0)
+print(data.head())
+
+# Load all patients' data
+all_data = load_raw_data()  # Returns concatenated DataFrame of all patients
+```
+
+## Data Types
+
+- **Raw Data**: Original CGM measurements
+- **Processed Data**: Cleaned and preprocessed CGM data
+- **Obfuscated Data**: Anonymized CGM data
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
