@@ -127,46 +127,50 @@ You can install the package using pip:
 pip install t1d-cpd-benchmark
 ```
 
-## Usage
-
-The package provides three main functions to load different types of data:
-- `load_raw_data()`: Load raw CGM data
-- `load_processed_data()`: Load processed CGM data
-- `load_obfuscated_data()`: Load obfuscated CGM data
-
-Each function can load either a single patient's data by index or all patients' data.
-
-### Example
+### Example usage
 
 ```python
-from t1d_cpd_benchmark.datasets import load_raw_data, load_processed_data, load_obfuscated_data
+from t1d_cpd_benchmark.loader import T1dCpd
 
-# Load first patient's raw data
-# index for load_raw_data can be 0 to 29
-data = load_raw_data(index=0)
-print(data.head())
+# Initialize the dataset
+dataset = T1dCpd()
 
-# Load first patient's processed data
-# index for load_processed_data can be 0 to 179
-data = load_processed_data(index=0)
-print(data.head())
+# Load all splits
+all_data = dataset.loader()  # Returns {"train": DataFrame, "test": DataFrame, "val": DataFrame}
 
-# Load first patient's obfuscated data
-# index for load_obfuscated_data can be 0 to 59
-data = load_obfuscated_data(index=0)
-print(data.head())
+# Load specific split
+train_data = dataset.loader(split="train")  # Returns train split Dataset
+test_data = dataset.loader(split="test")    # Returns test split Dataset
+val_data = dataset.loader(split="val")      # Returns validation split Dataset
 
-# Load all patients' data
-# Returns concatenated DataFrame of all patients
-all_data = load_raw_data()  
 ```
 
-## Data Types
+### Loading Specific Patient Data
+TODO: Update the current numbers of patients
+There are currently **180** patients with id 0 to 179
+```python
+# Load data for specific patients
+patient_ids = [1, 3, 5]
+patient_data = dataset.loader(patient_ids=patient_ids)  # Returns data for specified patients
 
-- **Raw Data**: Original CGM measurements
-- **Processed Data**: Cleaned and preprocessed CGM data
-- **Obfuscated Data**: Anonymized CGM data
+# Load specific split for specific patients
+train_patient_data = dataset.loader(split="train", patient_ids=patient_ids)
+```
+
+### Return Format
+
+The loader returns data in the following format:
+  ```python
+  {
+      "id": int,
+      "train": pd.DataFrame,
+      "test": pd.DataFrame,
+      "val": pd.DataFrame
+  }
+  ```
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+

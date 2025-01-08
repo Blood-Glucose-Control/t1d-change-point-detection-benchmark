@@ -1,7 +1,7 @@
 #  TODO: Add a base class once we have more data to load
 
 from datasets import Dataset, load_dataset
-from typing import Optional, List, Union, Dict
+from typing import Optional, List, Dict
 import pandas as pd
 
 
@@ -12,6 +12,7 @@ class T1dCpd:
         path = "Toooony/t1d_cpd_benchmark_dataset"
         ds = load_dataset(path, split="train")
 
+        # TODO: Modify the duration once the data is ready
         self.train_duration = 1 * 30
         self.test_duration = 1 * 30
 
@@ -22,7 +23,7 @@ class T1dCpd:
             columns=["Unnamed: 0.1", "Unnamed: 0", "food_glycemic_index", "affects_iob", "affects_fob", "dose_units"])
 
     # Data_set
-    def split_df(self, split="all") -> list[dict]:
+    def __split_df(self, split="all") -> list[dict]:
         """
         Splits time series data for each patient into train/test/validation sets.
 
@@ -92,14 +93,8 @@ class T1dCpd:
                 If split="all": Returns Dict with all splits {"train": DataFrame, "test": DataFrame, "val": DataFrame}
         """
         # Filter patients if IDs provided
-        data = self.split_df(split=split)
+        data = self.__split_df(split=split)
         if patient_ids:
             data = [x for x in data if x['id'] in patient_ids]
 
         return data
-
-
-
-dataset = T1dCpd()
-patients = dataset.loader("train", patient_ids=[1, 3, 5])
-print(patients)
