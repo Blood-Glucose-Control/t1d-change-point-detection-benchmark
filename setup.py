@@ -13,5 +13,6 @@ setup(
     install_requires=[
         "numpy>=1.25.0",
         "pandas>=2.0.3",
+        "datasets>=3.0.0"
     ],
 )
